@@ -1,16 +1,118 @@
+/** Definición de variables - paleta de colores*/
+
 :root {
-	/** Definición de variables */
-	--blanco: #FFF;
+	--blanco: #fff;
 	--negro: #000;
 	--oscuro: #212121;
-	--fondo: #0C722B;
-	--primario: #FFC107;
-	--secundario: #0091A7;
-	--terciario: #000;
+	--fondo: #0c722b;
+	--fondo-secundario: #275829;
+	--pedir: #dd9700;
+	--nuevo: #147580;
+	--detener: #db1919;
 }
 
-.titulo {
+/** Estilos Globales **/
+
+html {
+	font-size: 62.5%; /* 10/16 = 0.625 -> 62.5% */
+	/* Sirve para arreglar el descuadre del css con el diseño planeado
+	el padding y margin ya no forman parte de la medida con los elementos */
+	box-sizing: border-box; /* hack para box-model */
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit; /* hereda el truco box-model para cualquier pseudo elemento before y after */
+}
+
+body {
+	font-size: 16px; /*Heredará de html y ayuda a establecer que 1rem = 10px */
+	font-family: 'Lobster', cursive;
+	/* Color de fondo*/
+	background-image: linear-gradient(to left, var(--fondo) 0%, var(--fondo-secundario) 100%);
+}
+
+/** Estilo del titulo principal */
+#titulo {
 	text-align: center;
 	background-color: var(--negro);
 	color: var(--blanco);
+	margin: 0;
+	padding: 2.5rem;
+	font-size: 5rem;
+}
+
+/**  Estilos para los botones */
+
+.contenedor-botones {
+	margin-top: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.boton {
+	font-family: 'Fraunces', serif;
+	font-weight: normal;
+	padding: 0.9rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	margin-right: 2%;
+	color: var(--blanco);
+	text-shadow: 0 0.1rem 0.3rem var(--negro);
+	border-style: none;
+	box-shadow: 0 0.5rem 1rem var(--oscuro);
+}
+
+@keyframes animacion-boton {
+	50% {
+		transform: translateY(0.3rem);
+	}
+	100% {
+		transform: translateY(0rem);
+	}
+}
+
+.boton:hover {
+	animation: animacion-boton 1s infinite;
+	text-shadow: .1rem .1rem .1rem var(--oscuro), 0 0 .1rem var(--blanco);
+}
+
+.boton-nuevo {
+	background-color: var(--nuevo);
+}
+
+.boton-pedir {
+	background-color: var(--pedir);
+}
+
+.boton-detener {
+	background-color: var(--detener);
+}
+
+/** Estilos para los marcadores */
+
+.contenedor-marcador {
+	margin-left: 1%;
+}
+
+.titulo-marcador {
+	font-family: 'Fraunces', serif;
+	font-weight: bold;
+	font-size: 2.5rem;
+	color: var(--blanco);
+	text-shadow: 0 0.1rem 0.3rem var(--negro);
+	margin-left: 2.5%;
+	
+}
+
+/** Estilos para las cartas */
+
+.carta {
+	width: 13rem;
+	position: relative;
+	left: 9rem;
+	margin-left: -7.5rem;
+	margin-bottom: 1.5rem;
 }

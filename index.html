@@ -10,13 +10,53 @@
 	<link rel="preload" href="vendors/normalize.css" as="style">
 	<link rel="stylesheet" href="vendors/normalize.css">
 	<link rel="shortcut icon" type="image/x-icon" href="assets/img/fav.ico">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+		rel="stylesheet">
 	<title>Blackjack</title>
 </head>
 
 <body>
 	<header>
-		<h1 class="titulo"></h1>
+		<h1 id="titulo">Blackjack</h1>
 	</header>
+
+	<!-- seccion botones -->
+	<section>
+		<div class="contenedor-botones">
+			<button class="boton boton-nuevo">Nuevo juego</button>
+			<button class="boton boton-pedir">Pedir carta</button>
+			<button class="boton boton-detener">Detener</button>
+		</div>
+	</section>
+
+	<main>
+		<section>
+			<div class="contenedor-marcador">
+				<h2 class="titulo-marcador">Jugador: 1 NPC :<span> 0 </span></h2>
+				<div id="jugador-cartas">
+					<img class="carta" src="assets/cartas/9H.png" alt="9 hearts card">
+					<img class="carta" src="assets/cartas/9H.png" alt="9 hearts card">
+					<img class="carta" src="assets/cartas/9H.png" alt="9 hearts card">
+					<img class="carta" src="assets/cartas/9H.png" alt="9 hearts card">
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="contenedor-marcador">
+				<h2 class="titulo-marcador">NPC: 1 Jugador :<span> 0 </span></h2>
+				<div id="npc-cartas">
+					<img class="carta" src="assets/cartas/9S.png" alt="9 hearts card">
+					<img class="carta" src="assets/cartas/9S.png" alt="9 hearts card">
+					<img class="carta" src="assets/cartas/9S.png" alt="9 hearts card">
+					<img class="carta" src="assets/cartas/9S.png" alt="9 hearts card">
+				</div>
+			</div>
+		</section>
+	</main>
 
 	<script src="assets/js/app.js"></script>
 </body>
