@@ -1,0 +1,16 @@
+:root {
+	/** Definición de variables */
+	--blanco: #FFF;
+	--negro: #000;
+	--oscuro: #212121;
+	--fondo: #0C722B;
+	--primario: #FFC107;
+	--secundario: #0091A7;
+	--terciario: #000;
+}
+
+.titulo {
+	text-align: center;
+	background-color: var(--negro);
+	color: var(--blanco);
+}
