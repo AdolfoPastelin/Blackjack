@@ -37,7 +37,7 @@ function crearDeck() {
 	return deck; //arreglo barajeado
 }
 
-console.log(crearDeck()); //llamado a la función crear deck
+console.log(crearDeck()); //llamado a la función crear deck (deck desordenado)
 
 /* Función que permite quitar una carta del arreglo */
 function pedirCarta() {
@@ -51,4 +51,14 @@ function pedirCarta() {
 	return carta;
 }
 
-console.log(pedirCarta());
+/* console.log(pedirCarta()); */
+
+function valorCarta(carta) {
+
+	const valor = carta.substring(0, carta.length - 1);
+	return (isNaN(valor)) ? 
+			(valor === 'A') ? 11 : 10
+			: valor * 1;
+}
+
+console.log(valorCarta(pedirCarta()));
