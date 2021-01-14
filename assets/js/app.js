@@ -17,6 +17,8 @@ function registrarEventListeners() {
 }
 
 //* Funciones
+
+/* Función que crear un nuevo deck */
 function crearDeck() {
 	for (let i = 2; i <= 10; i++) {
 		for (const tipoCarta of tiposCartas) {
@@ -24,7 +26,7 @@ function crearDeck() {
 		}
 	}
 
-	for(let tipoEspecial of tiposEspeciales){
+	for (let tipoEspecial of tiposEspeciales) {
 		for (const tipoCarta of tiposCartas) {
 			deck.push(tipoEspecial + tipoCarta);
 		}
@@ -36,3 +38,17 @@ function crearDeck() {
 }
 
 console.log(crearDeck()); //llamado a la función crear deck
+
+/* Función que permite quitar una carta del arreglo */
+function pedirCarta() {
+
+	if (deck.length === 0) {
+		throw 'No hay cartas en el deck'; //throw tira un mensaje de error en consola
+	}
+	
+	const carta = deck.pop();
+
+	return carta;
+}
+
+console.log(pedirCarta());
