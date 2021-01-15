@@ -12,6 +12,7 @@ let puntosNPC = 0;
 const tiposCartas = ['C', 'D', 'H', 'S']; // iterador = tipoCarta
 const tiposEspeciales = ['A', 'J', 'Q', 'K']; //iterador = tipoEspecial
 const btnPedir = document.querySelector('.boton-pedir');
+const btnDetener = document.querySelector('.boton-detener');
 const puntosHTML = document.querySelectorAll('span');
 const divCartasJugador = document.querySelector('#cartas-jugador');
 const divCartasNPC = document.querySelector('#cartas-npc');
@@ -20,7 +21,6 @@ const divCartasNPC = document.querySelector('#cartas-npc');
 registrarEventListeners();
 function registrarEventListeners() {
 	btnPedir.addEventListener('click', () => {
-
 		const carta = pedirCarta();
 
 		puntosJugador = puntosJugador + valorCarta(carta);
@@ -38,15 +38,31 @@ function registrarEventListeners() {
 			btnPedir.classList.add('disabled');
 			btnPedir.setAttribute('disabled', true);
 
+			btnDetener.classList.add('disabled');
+			btnDetener.setAttribute('disabled', true);
+
 			turnoNPC(puntosJugador);
 			/* btnPedir.disabled = true; */ //deshabilita el botón de pedir carta
-		} else if (puntosJugador === 21){
+		} else if (puntosJugador === 21) {
 			console.warn('Blackjack!');
 			btnPedir.classList.add('disabled'); //agrega clase con estilos css
 			btnPedir.setAttribute('disabled', true); //agrega atributo al html -> disabled = "true"
 
+			btnDetener.classList.add('disabled');
+			btnDetener.setAttribute('disabled', true);
+
 			turnoNPC(puntosJugador);
 		}
+	});
+
+	btnDetener.addEventListener('click', () => {
+		btnPedir.classList.add('disabled');
+		btnPedir.setAttribute('disabled', true);
+
+		btnDetener.classList.add('disabled');
+		btnDetener.setAttribute('disabled', true);
+
+		turnoNPC(puntosJugador);
 	});
 }
 
@@ -67,7 +83,7 @@ function crearDeck() {
 	}
 
 	deck = _.shuffle(deck); //reordena de forma aleatoria el arreglo y lo devuelve en desorden
-	
+
 	return deck; //arreglo barajeado
 }
 
@@ -91,7 +107,6 @@ function valorCarta(carta) {
 }
 
 function turnoNPC(puntosMinimos) {
-	
 	do {
 		const carta = pedirCarta();
 
@@ -108,6 +123,5 @@ function turnoNPC(puntosMinimos) {
 		if (puntosMinimos > 21) {
 			break;
 		}
-
-	} while ( puntosNPC < puntosMinimos && puntosMinimos <= 21);
+	} while (puntosNPC < puntosMinimos && puntosMinimos <= 21);
 }
