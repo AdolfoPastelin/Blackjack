@@ -9,6 +9,7 @@
 	--pedir: #dd9700;
 	--nuevo: #147580;
 	--detener: #db1919;
+	--resultado: #ffdd19;
 }
 
 /** Estilos Globales **/
@@ -97,11 +98,24 @@ body {
 	cursor: no-drop;
 }
 
+/** Estilos del resultado */
+.resultado {
+	font-family: 'Fraunces', serif;
+	font-style: normal;
+	font-weight: bolder;
+	color: var(--resultado);
+	text-shadow: 0 0.3rem 0.8rem var(--negro);
+	font-size: 2.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 3rem;
+}
+
 /** Estilos para los marcadores */
 
 .contenedor-marcador {
 	margin-left: 1%;
-	/* margin-top: 10rem; */
 }
 
 .titulo-marcador {
