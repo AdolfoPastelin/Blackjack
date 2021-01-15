@@ -36,7 +36,7 @@ function registrarEventListeners() {
 		divCartasJugador.append(imgCarta);
 
 		if (puntosJugador > 21) {
-			resultado.textContent = 'Te has pasado de 21 puntos, perdiste :(';
+			/* resultado.textContent = 'Te has pasado de 21 puntos, perdiste :('; */
 			btnPedir.classList.add('disabled');
 			btnPedir.setAttribute('disabled', true);
 
@@ -46,7 +46,7 @@ function registrarEventListeners() {
 			turnoNPC(puntosJugador);
 			/* btnPedir.disabled = true; */ //deshabilita el botón de pedir carta
 		} else if (puntosJugador === 21) {
-			resultado.textContent = "Blackjack!!!";
+			/* resultado.textContent = "Blackjack!!!"; */
 			btnPedir.classList.add('disabled'); //agrega clase con estilos css
 			btnPedir.setAttribute('disabled', true); //agrega atributo al html -> disabled = "true"
 
@@ -82,8 +82,12 @@ function registrarEventListeners() {
 		divCartasJugador.innerHTML = '';
 		divCartasNPC.innerHTML = '';
 
-		btnPedir.setAttribute('disabled', false);
-		btnDetener.setAttribute('disabled', false);
+		btnPedir.classList.remove('disabled');
+		btnDetener.classList.remove('disabled');
+		btnPedir.removeAttribute('disabled');
+		btnDetener.removeAttribute('disabled');
+
+		resultado.textContent = '';
 	});
 }
 
@@ -147,14 +151,13 @@ function turnoNPC(puntosMinimos) {
 	} while (puntosNPC < puntosMinimos && puntosMinimos <= 21);
 
 	setTimeout(() => {
-		if (puntosNPC === puntosMinimos) {
-			resultado.textContent = 'Empate, nadie ha ganado :(';
-		} else if (puntosMinimos > 21) {
-			resultado.textContent = 'Ha ganado la NPC !!';
-		} else if (puntosNPC > 21) {
-			resultado.textContent = "Has ganado! :)"
-		} else {
-			resultado.textContent = 'Ha ganado la NPC !!';
+		if (puntosJugador === puntosNPC){
+			resultado.textContent = 'Empate, nadie ha ganado :/';
+		}
+		else if (puntosJugador > puntosNPC && puntosJugador <= 21  || puntosNPC > 21){
+			resultado.textContent = 'Has ganado :)';
+		}else if (puntosJugador < puntosNPC && puntosNPC <= 21 || puntosJugador > 21){
+			resultado.textContent = 'Ha ganado la NPC :(';
 		}
 	}, 10);
 
