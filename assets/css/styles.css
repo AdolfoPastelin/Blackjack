@@ -101,6 +101,7 @@ body {
 
 .contenedor-marcador {
 	margin-left: 1%;
+	/* margin-top: 10rem; */
 }
 
 .titulo-marcador {
@@ -110,7 +111,6 @@ body {
 	color: var(--blanco);
 	text-shadow: 0 0.1rem 0.3rem var(--negro);
 	margin-left: 2.5%;
-	
 }
 
 /** Estilos para las cartas */

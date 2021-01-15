@@ -5,7 +5,7 @@
 	S = Spades -> picas
 */
 
-//* Variables
+//* Variables //
 let deck = []; //arreglo de cartas (baraja)
 let puntosJugador = 0;
 let puntosNPC = 0;
@@ -14,8 +14,9 @@ const tiposEspeciales = ['A', 'J', 'Q', 'K']; //iterador = tipoEspecial
 const btnPedir = document.querySelector('.boton-pedir');
 const puntosHTML = document.querySelectorAll('span');
 const divCartasJugador = document.querySelector('#cartas-jugador');
+const divCartasNPC = document.querySelector('#cartas-npc');
 
-//* Listado de eventos
+//* Listado de eventos //
 registrarEventListeners();
 function registrarEventListeners() {
 	btnPedir.addEventListener('click', () => {
@@ -36,18 +37,20 @@ function registrarEventListeners() {
 			console.warn('Te has pasado de 21, perdiste');
 			btnPedir.classList.add('disabled');
 			btnPedir.setAttribute('disabled', true);
+
+			turnoNPC(puntosJugador);
 			/* btnPedir.disabled = true; */ //deshabilita el botón de pedir carta
 		} else if (puntosJugador === 21){
 			console.warn('Blackjack!');
 			btnPedir.classList.add('disabled'); //agrega clase con estilos css
 			btnPedir.setAttribute('disabled', true); //agrega atributo al html -> disabled = "true"
-		} else {
 
+			turnoNPC(puntosJugador);
 		}
 	});
 }
 
-//* Funciones
+//* Funciones //
 
 /* Función que crear un nuevo deck */
 function crearDeck() {
@@ -85,4 +88,26 @@ function valorCarta(carta) {
 	const valor = carta.substring(0, carta.length - 1);
 
 	return isNaN(valor) ? (valor === 'A' ? 11 : 10) : valor * 1;
+}
+
+function turnoNPC(puntosMinimos) {
+	
+	do {
+		const carta = pedirCarta();
+
+		puntosNPC = puntosNPC + valorCarta(carta);
+		puntosHTML[1].innerText = puntosNPC;
+
+		const imgCarta = document.createElement('img');
+		imgCarta.src = `assets/cartas/${carta}.png`;
+		imgCarta.alt = 'card';
+		imgCarta.classList.add('carta');
+
+		divCartasNPC.append(imgCarta);
+
+		if (puntosMinimos > 21) {
+			break;
+		}
+
+	} while ( puntosNPC < puntosMinimos && puntosMinimos <= 21);
 }
