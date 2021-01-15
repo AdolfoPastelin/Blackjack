@@ -136,3 +136,23 @@ body {
 	margin-left: -7.5rem;
 	margin-bottom: 1.5rem;
 }
+
+/** Estilos del footer  */
+.footer {
+	font-family: 'Fraunces', serif;
+	color: var(--blanco);
+	font-style: italic;
+	font-weight: bold;
+	font-size: 2rem;
+	letter-spacing: .1rem;
+	text-shadow: 0 0.1rem 0.3rem var(--negro);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.footer svg {
+	color: var(--detener);
+	width: 1.5rem;
+}
