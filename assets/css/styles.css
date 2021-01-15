@@ -91,6 +91,12 @@ body {
 	background-color: var(--detener);
 }
 
+/* disabled para el botón */
+.disabled {
+	opacity: 0.3;
+	cursor: no-drop;
+}
+
 /** Estilos para los marcadores */
 
 .contenedor-marcador {
