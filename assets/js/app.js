@@ -11,8 +11,10 @@ let puntosJugador = 0;
 let puntosNPC = 0;
 const tiposCartas = ['C', 'D', 'H', 'S']; // iterador = tipoCarta
 const tiposEspeciales = ['A', 'J', 'Q', 'K']; //iterador = tipoEspecial
+const btnNuevo = document.querySelector('.boton-nuevo');
 const btnPedir = document.querySelector('.boton-pedir');
 const btnDetener = document.querySelector('.boton-detener');
+const resultado = document.querySelector('.resultado');
 const puntosHTML = document.querySelectorAll('span');
 const divCartasJugador = document.querySelector('#cartas-jugador');
 const divCartasNPC = document.querySelector('#cartas-npc');
@@ -34,7 +36,7 @@ function registrarEventListeners() {
 		divCartasJugador.append(imgCarta);
 
 		if (puntosJugador > 21) {
-			console.warn('Te has pasado de 21, perdiste');
+			resultado.textContent = 'Te has pasado de 21 puntos, perdiste :(';
 			btnPedir.classList.add('disabled');
 			btnPedir.setAttribute('disabled', true);
 
@@ -44,7 +46,7 @@ function registrarEventListeners() {
 			turnoNPC(puntosJugador);
 			/* btnPedir.disabled = true; */ //deshabilita el botón de pedir carta
 		} else if (puntosJugador === 21) {
-			console.warn('Blackjack!');
+			resultado.textContent = "Blackjack!!!";
 			btnPedir.classList.add('disabled'); //agrega clase con estilos css
 			btnPedir.setAttribute('disabled', true); //agrega atributo al html -> disabled = "true"
 
@@ -63,6 +65,25 @@ function registrarEventListeners() {
 		btnDetener.setAttribute('disabled', true);
 
 		turnoNPC(puntosJugador);
+	});
+
+	btnNuevo.addEventListener('click', () => {
+		console.clear;
+
+		deck = [];
+		deck = crearDeck();
+
+		puntosJugador = 0;
+		puntosNPC = 0;
+
+		puntosHTML[0].innerText = 0;
+		puntosHTML[1].innerText = 0;
+
+		divCartasJugador.innerHTML = '';
+		divCartasNPC.innerHTML = '';
+
+		btnPedir.setAttribute('disabled', false);
+		btnDetener.setAttribute('disabled', false);
 	});
 }
 
@@ -124,4 +145,17 @@ function turnoNPC(puntosMinimos) {
 			break;
 		}
 	} while (puntosNPC < puntosMinimos && puntosMinimos <= 21);
+
+	setTimeout(() => {
+		if (puntosNPC === puntosMinimos) {
+			resultado.textContent = 'Empate, nadie ha ganado :(';
+		} else if (puntosMinimos > 21) {
+			resultado.textContent = 'Ha ganado la NPC !!';
+		} else if (puntosNPC > 21) {
+			resultado.textContent = "Has ganado! :)"
+		} else {
+			resultado.textContent = 'Ha ganado la NPC !!';
+		}
+	}, 10);
+
 }
