@@ -165,6 +165,6 @@
 			} else if ((puntosJugador < puntosNPC && puntosNPC <= 21) || puntosJugador > 21) {
 				resultado.textContent = 'Ha ganado la NPC :(';
 			}
-		}, 20);
+		}, 100);
 	}
 })();
